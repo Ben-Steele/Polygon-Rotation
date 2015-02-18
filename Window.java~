@@ -1,0 +1,26 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class Window {
+    
+    public static void main(String[] args) {
+	JFrame frame = new JFrame();
+	frame.setTitle("cube");
+	frame.setSize(500,500);
+	
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	DrawingPanel cPanel = new DrawingPanel();
+	RightControl cp = new RightControl(cPanel);
+	TopControl tc = new TopControl(cPanel);
+	Container c = frame.getContentPane();
+	c.setLayout(new BorderLayout());
+	c.add(cPanel, BorderLayout.CENTER);
+	c.add(cp,BorderLayout.EAST);
+	c.add(tc,BorderLayout.NORTH);
+	
+	frame.pack();
+	frame.setVisible(true);
+	frame.setResizable(true);
+    }
+}

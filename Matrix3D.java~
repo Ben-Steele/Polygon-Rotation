@@ -1,0 +1,74 @@
+
+public class Matrix3D {
+
+    double[][] matrix = {{1,0,0},{0,1,0},{0,0,1}};;
+
+    public Matrix3D() {
+    }
+
+    public void concat(Matrix3D temp) {
+	double[][] sum = new double[3][3];
+	for(int i=0;i<3;i++) {
+	    for(int j=0;j<3;j++) {
+		sum[i][j] = (temp.getPos(0,j))*(matrix[i][0]) + (temp.getPos(1,j))*(matrix[i][1]) + (temp.getPos(2,j))*(matrix[i][2]);
+	    }
+	}
+	matrix = sum;
+    }
+
+    public void setValues(double[][] temp) {
+	matrix = temp;
+    }
+    //rotate counter clockwise theta degrees
+    public void rotate(double theta, String  axis) {
+	Matrix3D temp = new Matrix3D();
+	double s = Math.sin(theta);
+	double c = Math.cos(theta);
+	if(axis == "x") {
+	    double[][] at = {{1,0,0},{0,c,-s},{0,s,c}};
+	    temp.setValues(at);
+	}
+	else if(axis == "y") {
+	    double[][] at = {{c,0,s},{0,1,0},{-s,0,c}};
+	    temp.setValues(at);
+	}
+	else if(axis == "z") {
+	    double[][] at = {{c,-s,0},{s,c,0},{0,0,1}};
+	    temp.setValues(at);
+	}
+	this.concat(temp);
+    }
+
+    public void scale(double a) {
+	Matrix3D temp = new Matrix3D();
+	double[][] at = {{a,0,0},{0,a,0},{0,0,a}};
+	temp.setValues(at);
+	for(int i=0;i<3;i++) {
+	    for(int j=0;j<3;j++) {
+	    }
+	}
+	this.concat(temp);
+	for(int i=0;i<3;i++) {
+	    for(int j=0;j<3;j++) {
+	    }
+	}
+	
+    }
+    public double getPos(int a,int b) {
+	return matrix[a][b];
+    }
+    public double[][] getMat() {
+	return matrix;
+    }
+    public Vertex mult(Vertex point) {
+	double[] temp = new double[3];
+	for(int i=0;i<3;i++) {
+	    temp[i] = point.getX()*matrix[0][i]+point.getY()*matrix[1][i]+point.getZ()*matrix[2][i];
+	}
+	Vertex tempV = new Vertex(temp[0],temp[1],temp[2]);
+	return tempV;
+    }
+    public String toString() {
+	
+    }
+}

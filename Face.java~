@@ -1,0 +1,28 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+import java.util.Random;
+
+public class Face {
+
+    int[] vertices;
+    Color c;
+
+    public Face(int[] v){
+	Random r = new Random();
+	vertices = v;
+	c = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
+    }
+    public Color getColor() {
+	return c;
+    }
+
+    public int getIndex(int i) {
+	return vertices[i];
+    }
+
+    public int size() {
+	return vertices.length;
+    }
+}
