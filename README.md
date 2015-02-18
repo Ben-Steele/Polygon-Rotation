@@ -10,6 +10,6 @@ the surface of the shape and seeing the "wire frame" of the shape.
 The bottom control pannel controls an arbitrary rotation. 
 Moving the bottom x,y, and z sliders adjusts the vector the shape will be rotated around
 and this vector can be seen when in the wire frame view.
-the top sliders rotate around the respective axes.
-Distance changes the viewing distance, but entire shape will be drawn whether it
+The top sliders rotate around the respective axes.
+Distance changes the viewing distance, but the entire shape will be drawn whether it
 is in the viewing angle or not.
